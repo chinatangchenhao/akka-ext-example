@@ -25,7 +25,7 @@ public class HttpRequestHandle {
         // 定义source
         Source<IncomingConnection, CompletionStage<ServerBinding>> source =
             Http.get(system)
-                .bind(ConnectHttp.toHost("localhpst", 8090), materializer);
+                .bind(ConnectHttp.toHost("localhost", 8090), materializer);
 
         // 定义请求处理
         Function<HttpRequest, HttpResponse> processRequest = new Function<HttpRequest, HttpResponse>() {

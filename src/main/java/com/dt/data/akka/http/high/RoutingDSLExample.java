@@ -1,6 +1,6 @@
 package com.dt.data.akka.http.high;
 
-/*import akka.NotUsed;
+import akka.NotUsed;
 import akka.actor.ActorSystem;
 import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
@@ -13,15 +13,15 @@ import akka.http.javadsl.server.Route;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
-import java.util.concurrent.CompletionStage;*/
+import java.util.concurrent.CompletionStage;
 
-public class RoutingDSLExample /*extends AllDirectives*/ {
+public class RoutingDSLExample extends AllDirectives {
 
     public static void main(String[] args) {
-        //new RoutingDSLExample().start();
+        new RoutingDSLExample().start();
     }
 
-    /*public Route getRoute() {
+    public Route getRoute() {
         return get(() -> route(
                 path("index", () -> complete("欢迎来到首页")),
                 path("books", () -> complete("书籍列表")),
@@ -36,14 +36,15 @@ public class RoutingDSLExample /*extends AllDirectives*/ {
                     return complete(response);
                 })
         ));
-    }*/
+    }
 
     public void start() {
-        /*ActorSystem system = ActorSystem.create("sys");
+        ActorSystem system = ActorSystem.create("sys");
         Materializer materializer = ActorMaterializer.create(system);
+        // 注意：低版本.flow方法会提示找不到
         Flow<HttpRequest, HttpResponse, NotUsed> flow = getRoute().flow(system, materializer);
         CompletionStage<ServerBinding> binding =
         Http.get(system).bindAndHandle(flow,
-                ConnectHttp.toHost("localhost", 8090), materializer);*/
+                ConnectHttp.toHost("localhost", 8090), materializer);
     }
 }
